@@ -1,0 +1,25 @@
+#!/bin/sh /etc/rc.common
+
+START=90
+STOP=99
+
+
+
+start() {	
+	config_load mymodule_config
+	config_foreach getOptionValue BeaconConfig
+}
+
+stop() {
+	echo "My Init Program stop" > /etc/showMyInit
+}
+
+getOptionValue() {
+	local intval string
+	config_get ifenable "$1" ifenable
+	config_get interval "$1" interval
+	config_get string "$1" interrupt_string
+	echo "$ifenable" > /etc/config/myconfig/ifenable
+	echo "$interval" > /etc/config/myconfig/beacon_interval
+	echo "$string" > /etc/config/myconfig/interrupt_string	
+}

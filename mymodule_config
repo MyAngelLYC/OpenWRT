@@ -1,0 +1,4 @@
+config BeaconConfig 'Beacon_Config'
+	option ifenable '1'
+	option interval '10'
+	option interrupt_string 'Beacon Interupt!'
