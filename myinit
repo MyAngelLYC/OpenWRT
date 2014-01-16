@@ -15,11 +15,13 @@ stop() {
 }
 
 getOptionValue() {
-	local intval string
-	config_get ifenable "$1" ifenable
+	local interval ifenable repeat string
 	config_get interval "$1" interval
+	config_get ifenable "$1" ifenable
+	config_get repeat "$1" repeat
 	config_get string "$1" interrupt_string
-	echo "$ifenable" > /etc/config/myconfig/ifenable
 	echo "$interval" > /etc/config/myconfig/beacon_interval
+	echo "$ifenable" > /etc/config/myconfig/ifenable
+	echo "$repeat" > /etc/config/myconfig/repeat
 	echo "$string" > /etc/config/myconfig/interrupt_string	
 }

@@ -428,6 +428,7 @@ out:
 }
 
 bool isBeaconConfigEnable=false;
+int beaconRepeatTimes=0;
 char beaconInterruptString[50];
 char readBuffer[10];
 
@@ -547,6 +548,14 @@ irqreturn_t ath_isr(int irq, void *dev)
 			{
 				isBeaconConfigEnable=true;
 				printk("***********Beacon Config is enabled!*************\n");
+				
+				memset(readBuffer,0,sizeof(readBuffer));
+				f = filp_open("/etc/config/myconfig/repeat",O_RDONLY,0644);
+				f->f_op->read(f,readBuffer,sizeof(readBuffer),&f->f_pos);			
+				filp_close(f,NULL);
+				beaconRepeatTimes=simple_strtoul(readBuffer,NULL,10);			
+				printk("Beacon Repeat Times is:%d\n",beaconRepeatTimes);
+
 				memset(beaconInterruptString,0,sizeof(beaconInterruptString));
 				f = filp_open("/etc/config/myconfig/interrupt_string",O_RDONLY,0644);
 				f->f_op->read(f,beaconInterruptString,sizeof(beaconInterruptString),&f->f_pos);			
@@ -558,12 +567,13 @@ irqreturn_t ath_isr(int irq, void *dev)
 			count=0;
 		}
 	
-		if(isBeaconConfigEnable && !isFirstRead && count==100)
+		if(isBeaconConfigEnable && !isFirstRead && count==beaconRepeatTimes)
 		{		
 			printk("Beacon Interrupt String is:%s",beaconInterruptString);
 			count=0;
 		}
-///////////End add By LYC/////////////	
+///////////End add By LYC/////////////
+			
 		tasklet_schedule(&sc->bcon_tasklet);
 	}
 
@@ -1631,6 +1641,10 @@ static void ath9k_bss_info_changed(struct ieee80211_hw *hw,
 	struct ath_common *common = ath9k_hw_common(ah);
 	struct ath_vif *avp = (void *)vif->drv_priv;
 	int slottime;
+
+	///////////////////////Add By LYC//////////////////////////////////////
+	printk("**********Current Beacon Interval=%d**********\n",sc->cur_beacon_conf.beacon_interval);
+	///////////////////////Add By LYC End//////////////////////////////////////
 
 	ath9k_ps_wakeup(sc);
 	mutex_lock(&sc->mutex);

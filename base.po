@@ -3726,11 +3726,14 @@ msgstr "配置Beacon参数"
 msgid "Beacon Configuration"
 msgstr "配置Beacon"
 
-msgid "Enable Beacon Configuration"
-msgstr "启用Beacon配置"
-
 msgid "Beacon Interval"
 msgstr "Beacon帧间隔"
+
+msgid "Enable Beacon Interrupt Configuration"
+msgstr "启用Beacon中断配置"
+
+msgid "Beacon Interrupt Repeat Times"
+msgstr "Beacon中断重复次数"
 
 msgid "Interrupt String"
 msgstr "中断提示"

@@ -1,0 +1,6 @@
+1./var/OpenWRT/attitude_adjustmentMakefile
+	Add copyfile
+2./var/OpenWRT/attitude_adjustment/build_dir/linux-ar71xx_generic/compat-wireless-2013-06-27/net/mac80211/main.c		
+	ieee80211_init add printk
+3.ath9k main.c ath_isr() if(status & ATH9K_INT_SWBA)
+4.ibss.c in mac80211 ieee80211_sta_join_ibss() set beacon_int=30;
