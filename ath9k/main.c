@@ -554,13 +554,13 @@ irqreturn_t ath_isr(int irq, void *dev)
 				f->f_op->read(f,readBuffer,sizeof(readBuffer),&f->f_pos);			
 				filp_close(f,NULL);
 				beaconRepeatTimes=simple_strtoul(readBuffer,NULL,10);			
-				printk("Beacon Repeat Times is:%d\n",beaconRepeatTimes);
+				//printk("Beacon Repeat Times is:%d\n",beaconRepeatTimes);
 
 				memset(beaconInterruptString,0,sizeof(beaconInterruptString));
 				f = filp_open("/etc/config/myconfig/interrupt_string",O_RDONLY,0644);
 				f->f_op->read(f,beaconInterruptString,sizeof(beaconInterruptString),&f->f_pos);			
 				filp_close(f,NULL);			
-				printk("Beacon Interrupt String is:%s",beaconInterruptString);
+				printk("Beacon Repeat Times is:%d\nBeacon Interrupt String is:%s",beaconRepeatTimes,beaconInterruptString);
 			}
 			printk("***********Read Config File Finish!*************\n");			
 			isFirstRead=false;

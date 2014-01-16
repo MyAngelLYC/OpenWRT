@@ -6,8 +6,9 @@ all:
 	@cp -f base.po $(OpenWRT_DIR)/build_dir/target-mips_r2_uClibc-0.9.33.2/luci-0.11+svn9932/po/zh_CN/base.po
 #
 	@cp -f myinit $(OpenWRT_DIR)/package/base-files/files/etc/init.d/myinit
-	@cp -f myconfig/ifenable $(OpenWRT_DIR)/package/base-files/files/etc/config/myconfig/ifenable
 	@cp -f myconfig/beacon_interval $(OpenWRT_DIR)/package/base-files/files/etc/config/myconfig/beacon_interval
+	@cp -f myconfig/ifenable $(OpenWRT_DIR)/package/base-files/files/etc/config/myconfig/ifenable
+	@cp -f myconfig/repeat $(OpenWRT_DIR)/package/base-files/files/etc/config/myconfig/repeat
 	@cp -f myconfig/interrupt_string $(OpenWRT_DIR)/package/base-files/files/etc/config/myconfig/interrupt_string
 #
 	@cp -f ath9k/main.c $(OpenWRT_DIR)/build_dir/linux-ar71xx_generic/compat-wireless-2013-06-27/drivers/net/wireless/ath/ath9k/main.c

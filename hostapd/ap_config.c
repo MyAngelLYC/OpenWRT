@@ -149,12 +149,12 @@ struct hostapd_config * hostapd_config_defaults(void)
 //***********************Add By LYC***********************
 	FILE *f;
 	f=fopen("/etc/config/myconfig/beacon_interval","r");
-	char buf[50];
+	char buf[10];
 	memset(buf,0,sizeof(buf));
-	fread(buf,sizeof(char),50,f);  	
+	fread(buf,sizeof(char),10,f);  	
 	fclose(f);
-	int interval = atoi(buf);
-	conf->beacon_int = interval;
+	int set_interval = atoi(buf);
+	conf->beacon_int = set_interval;
 //**********************Add End***************************
 
 	conf->rts_threshold = -1; /* use driver default: 2347 */
