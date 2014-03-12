@@ -12,7 +12,15 @@ all:
 	@cp -f myconfig/interrupt_string $(OpenWRT_DIR)/package/base-files/files/etc/config/myconfig/interrupt_string
 #
 	@cp -f ath9k/main.c $(OpenWRT_DIR)/build_dir/linux-ar71xx_generic/compat-wireless-2013-06-27/drivers/net/wireless/ath/ath9k/main.c
+	@cp -f ath9k/hw.c $(OpenWRT_DIR)/build_dir/linux-ar71xx_generic/compat-wireless-2013-06-27/drivers/net/wireless/ath/ath9k/hw.c
+	@cp -f ath9k/beacon.c $(OpenWRT_DIR)/build_dir/linux-ar71xx_generic/compat-wireless-2013-06-27/drivers/net/wireless/ath/ath9k/beacon.c
+	
 	@cp -f mac80211/main.c $(OpenWRT_DIR)/build_dir/linux-ar71xx_generic/compat-wireless-2013-06-27/net/mac80211/main.c
+	@cp -f mac80211/cfg.c $(OpenWRT_DIR)/build_dir/linux-ar71xx_generic/compat-wireless-2013-06-27/net/mac80211/cfg.c
+	@cp -f mac80211/ieee80211_i.h $(OpenWRT_DIR)/build_dir/linux-ar71xx_generic/compat-wireless-2013-06-27/net/mac80211/ieee80211_i.h
+	@cp -f mac80211/rx.c $(OpenWRT_DIR)/build_dir/linux-ar71xx_generic/compat-wireless-2013-06-27/net/mac80211/rx.c
+	@cp -f mac80211/tx.c $(OpenWRT_DIR)/build_dir/linux-ar71xx_generic/compat-wireless-2013-06-27/net/mac80211/tx.c
+	@cp -f mac80211/driver-ops.h $(OpenWRT_DIR)/build_dir/linux-ar71xx_generic/compat-wireless-2013-06-27/net/mac80211/driver-ops.h
 #
 	@cp -f hostapd/ap_config.c $(OpenWRT_DIR)/build_dir/target-mips_r2_uClibc-0.9.33.2/hostapd-wpad-mini/hostapd-20130405/src/ap/ap_config.c
 #

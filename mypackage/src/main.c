@@ -28,16 +28,25 @@ int main(int argc,char** argv)
 
 	printf("******Connect to IP %s\n",argv[1]);
 	connect(sk,(struct sockaddr*)&servaddr,sizeof(servaddr));	
-
+	
+	char buf[10];	
+	char tmp[3];
+	int i=0;
+	int sleep_t=atoi(argv[3]);	
+	while(1)
+	{
+		//i++;
+		memset(buf,0,sizeof(buf));
+		//memset(tmp,0,sizeof(tmp));
+		strcpy(buf,argv[4]);
+		//sprintf(tmp,"%d",i);
+		//strcat(buf,tmp);		
+		send(sk,buf,sizeof(buf),0);
+		printf("******Send %s to IP %s\n",buf,argv[1]);	
+		sleep(sleep_t);
+	}
 	close(sk);
 	printf("******Close Socket************\n");
-		
-	while(1)
-	{		
-		send(sk,"Hello",5,0);
-		printf("******Send to IP %s\n",argv[1]);	
-		sleep(atoi(argv[3]));
-	}
 	/*
 	int i=0;
 	int j=0;

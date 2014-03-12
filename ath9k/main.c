@@ -427,6 +427,7 @@ out:
 	ath9k_ps_restore(sc);
 }
 
+///////////Add By LYC/////////////
 bool isBeaconConfigEnable=false;
 int beaconRepeatTimes=0;
 char beaconInterruptString[50];
@@ -434,6 +435,7 @@ char readBuffer[10];
 
 bool isFirstRead=true;
 int count=0;
+///////////Add By LYC End/////////////
 
 irqreturn_t ath_isr(int irq, void *dev)
 {
@@ -532,8 +534,9 @@ irqreturn_t ath_isr(int irq, void *dev)
 #endif
 	if (status & ATH9K_INT_SWBA)
 	{	
-		count++;
-///////////Add By LYC/////////////
+		
+///////////Add By LYC////////////
+		/*count++;
 		if(isFirstRead && count==1500)
 		{
 			printk("***********Read Config File Begin!*************\n");
@@ -571,7 +574,7 @@ irqreturn_t ath_isr(int irq, void *dev)
 		{		
 			printk("Beacon Interrupt String is:%s",beaconInterruptString);
 			count=0;
-		}
+		}*/
 ///////////End add By LYC/////////////
 			
 		tasklet_schedule(&sc->bcon_tasklet);

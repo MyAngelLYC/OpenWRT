@@ -592,7 +592,10 @@ struct ieee80211_hw *ieee80211_alloc_hw(size_t priv_data_len,
 	wiphy->bss_priv_size = sizeof(struct ieee80211_bss);
 
 	local = wiphy_priv(wiphy);
-
+	/*LYC add Begin*/
+	local->sendBlockCount=0;
+	/*LYC add end*/	
+	
 	local->hw.wiphy = wiphy;
 
 	local->hw.priv = (char *)local + ALIGN(sizeof(*local), NETDEV_ALIGN);
